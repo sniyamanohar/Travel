@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap");
+
+@mixin mQ($px) {
+  @media screen and (max-width: $px) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: #111;
+  background: #f5f6f8;
+}
+
+a,
+button {
+  color: #4fc08d;
+}
+
+main {
+  width: min(980px, 85%);
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: min(20vh, 5em);
+
+  .header {
+    margin-bottom: 55px;
+
+    @include mQ(600px) {
+      margin-bottom: 70px !important;
+    }
+
+    h1 {
+      font-weight: 800;
+      font-size: 3rem;
+      margin: 5px -5px 15px;
+    }
+
+    span {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      font-weight: 700;
+      font-size: 14px;
+      color: #471aa0;
+    }
+
+    p {
+      max-width: min(40ch, 100% - 2rem);
+      line-height: 1.6;
+      color: #565656;
+    }
+  }
+
+  .item {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 28px 25px;
+      color: #fff;
+      background: rgb(2, 0, 36);
+      background: linear-gradient(
+        0deg,
+        #020024 0%,
+        #000032a1 3%,
+        #17d9ff00 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      span {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        border-radius: 60px;
+        padding: 10px 20px;
+        display: inline-block;
+      }
+
+      > div {
+        h2 {
+          letter-spacing: 0.5px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}
+
+.owl-nav {
+  position: absolute;
+  top: -100px;
+  right: 0;
+
+  @include mQ(600px) {
+    top: -60px !important;
+  }
+
+  button {
+    background: #fff !important;
+    width: 45px;
+    height: 45px;
+    font-size: 25px !important;
+    box-shadow: 0px 0px 17px #00000005;
+    border-radius: 50%;
+
+    &:nth-of-type(1) {
+      margin-right: 13px;
+    }
+  }
+}
+
+        </style>
+
+    </head>
+    <body>
+        <main>
+            <div class="header">
+              <span>top cities</span>
+              <h1>Our popular cities</h1>
+              <p>We are a team of humans with the strategy, tools, and solutions and digital products.</p>
+
+            </div>
+            <div class="owl-carousel owl-theme">
+              <div class="item">
+                <img src="https://images.pexels.com/photos/77171/pexels-photo-77171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Great Britain">
+                <div class="overlay">
+                  <span><a href="place">Great Britain</a></span>
+                  <div>
+                    <h2>London</h2>
+                    <p>5 Popular places</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://images.pexels.com/photos/5282269/pexels-photo-5282269.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Indonesia">
+                <div class="overlay">
+                  <span><a href="place2">Indonesia</a></span>
+                  <div>
+                    <h2>Bali</h2>
+                    <p>4 Popular places</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://images.pexels.com/photos/3722818/pexels-photo-3722818.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Spain">
+                <div class="overlay">
+                  <span><a href="place1">Spain</a></span>
+                  <div>
+                    <h2>Barcelona</h2>
+                    <p>5 Popular places</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://images.pexels.com/photos/4046386/pexels-photo-4046386.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Italy">
+                <div class="overlay">
+                  <span><a href="place3">Italy</a></span>
+                  <div>
+                    <h2>Florence</h2>
+                    <p>4 Popular places</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://images.pexels.com/photos/2044434/pexels-photo-2044434.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="United Arab Emirates">
+                <div class="overlay">
+                  <span><a href="place4">United Arab Emirates</a></span>
+                  <div>
+                    <h2>Dubai</h2>
+                    <p> Popular places</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://images.pexels.com/photos/699466/pexels-photo-699466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="France">
+                <div class="overlay">
+                  <span><a href="place5">France</a></span>
+                  <div>
+                    <h2>Paris</h2>
+                    <p> Popular places</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://images.pexels.com/photos/572689/pexels-photo-572689.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="New Zealand">
+                <div class="overlay">
+                  <span><a href="place6">New Zealand</a></span>
+                  <div>
+                    <h2>West Coast</h2>
+                    <p>2 Popular places</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <img src="https://images.pexels.com/photos/258196/pexels-photo-258196.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Italy">
+                <div class="overlay">
+                  <span><a href="place7">Italy</a></span>
+                  <div>
+                    <h2>Venice</h2>
+                    <p>5 Popular places</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+          <script>
+            /* inspiration
+https://cz.pinterest.com/pin/830703093774129160/ */
+$(".owl-carousel").owlCarousel({
+  loop: true,
+  margin: 10,
+  nav: true,
+  responsive: {
+    0: {
+      items: 1
+    },
+    600: {
+      items: 3
+    }
+  }
+});
+
+          </script>
+    </body>
+</html>

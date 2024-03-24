@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Navbar</title>
+    <style>
+        ::before, ::after, * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgba(0,0,0,0.6);
+  font-family: "Inter", sans-serif;
+  nav {
+    height: 100px;
+    width: 100%;
+    background-color: cyan;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .brand-name {
+      font-size: 3rem;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      width: 50px;
+      cursor: pointer;
+      position: fixed;
+      top: 5px;
+      right: 5px;
+      .line {
+        height: 8px;
+        width: 100%;
+        background-color: white;
+        border-radius: 100vw;
+        margin: 4px;
+      }
+    }
+    .links-container {
+      list-style: none;
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      .link {
+        padding: 1rem;
+        font-size: 1.5rem;
+        align-self: center;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        cursor: pointer;
+        &:hover {
+          background-color: gray;
+          color: white
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  body {
+    nav {
+      height: fit-content;
+      justify-content: flex-end;
+      .brand-name {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+        margin: 0.5rem;
+      }
+      .links-container {
+        display: none;
+        &.active {
+          display: flex;
+          width: 100%;
+          justify-content: center;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+        /*
+font-family: 'Playfair Display', serif;
+font-family: 'Varela Round', sans-serif;
+*/
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+*:focus {
+	outline: none;
+}
+
+body {
+	padding: 0;
+	margin: 0;
+	background: #eee;
+}
+
+.s2,
+.s3 {
+	margin-top: 200px;
+}
+
+/*
+========================================
+Grid
+========================================
+*/
+
+.row {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+}
+
+.row .col {
+	-webkit-box-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+
+.row-thirds {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+}
+
+.row-thirds .col {
+	width: 32%;
+}
+
+.card p,
+.mobile-card p,
+.s2 p,
+.s3 p {
+	color: #131111f3;
+	letter-spacing: 1px;
+	line-height: 1.6em;
+	font-family: "Playfair Display", serif;
+}
+
+.standard-nav {
+	text-transform: lowercase;
+	font-family: "Varela Round", sans-serif;
+	width: 100%;
+	text-align: center;
+	background: #5dacd3;
+	box-shadow: 0px 0px 6px 2px rgba(184, 13, 13, 0.5);
+	position: fixed;
+	z-index: 1;
+}
+
+.standard-nav a {
+	text-align: center;
+	font-weight: 300;
+	letter-spacing: 2px;
+	display: inline-block;
+	color: #eee;
+	text-align: center;
+	margin: 0 -2px;
+	padding: 15px 60px;
+	text-decoration: none;
+	transition: all 0.35s;
+}
+
+.standard-nav a:hover {
+	background: #040c7e;
+	color: #009688;
+}
+
+#open-btn {
+	font-size: 1.6em;
+	padding: 10px 20px;
+	font-family: "Varela Round", sans-serif;
+	display: none;
+	background: #222222eb;
+	color: #eee;
+	width: 100%;
+	float: right;
+	transition: all 0.35s;
+}
+
+#open-btn:hover {
+	cursor: pointer;
+	color: #009688;
+}
+
+#menu-txt {
+	font-size: 0.6em;
+}
+
+.overlay {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.9);
+	overflow-x: hidden;
+	transition: 0.5s;
+}
+
+.overlay-content {
+	position: relative;
+	top: 100px;
+	width: 100%;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.overlay-content a {
+	font-family: "Varela Round", sans-serif;
+	padding: 8px;
+	text-decoration: none;
+	font-size: 1.8em;
+	font-weight: 300;
+	color: #eceff1;
+	display: block;
+	transition: all 0.35s;
+}
+
+.overlay .fa-times-circle {
+	color: #009688;
+	transition: all 0.35s;
+}
+
+.overlay .fa-times-circle:hover {
+	color: #f44336;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+	color: #009688;
+}
+
+.overlay .closebtn {
+	position: absolute;
+	top: 20px;
+	right: 45px;
+	font-size: 60px;
+}
+
+/*
+========================================
+Hero
+========================================
+*/
+
+.hero {
+	height: 100vh;
+	height: 640px;
+}
+
+img {
+	width: 100%;
+	height: auto;
+}
+
+.hero {
+	background: url("https://images.unsplash.com/photo-1474610715337-344726d48cb7?ixlib=rb-0.3.5&s=f058f756b499528a369e6eaeb799af5c&auto=format&fit=crop&w=1950&q=80") no-repeat bottom
+		center;
+	background-size: cover;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	top: -190px;
+	left: 0;
+	bottom: 0;
+}
+
+.card {
+	padding: 20px 30px;
+	text-align: center;
+	background: #fff;
+	border-radius: 4px;
+	width: 400px;
+	height: 300px;
+	box-shadow: 0px 4px 30px 1px rgba(0, 0, 0, 0.2);
+}
+
+.card h4,
+.s3 h4 {
+	font-family: "Varela Round", sans-serif;
+	background: linear-gradient(to right, #12c0f0, #00bcd4);
+	background: -webkit-linear-gradient(to right, #009688, #0ac7e0);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.card h1 {
+	font-family: "Playfair Display", serif;
+	color: #0ba2d489;
+}
+
+.card-image {
+	margin: 10px 0;
+	background: #b2b2b2;
+	background: url("https://images.unsplash.com/photo-1488654849086-2aab86c3261f?ixlib=rb-0.3.5&s=79a944fa1f4239fedb461fb251980b2e&auto=format&fit=crop&w=1950&q=80")no-repeat
+		center;
+	background-size: cover;
+	width: 300px;
+	height: 280px;
+	-webkit-filter: grayscale(70%);
+	filter: grayscale(70%);
+}
+
+/*
+========================================
+Main
+========================================
+*/
+
+main {
+	padding: 50px;
+}
+
+.s1 {
+	margin: 70px auto;
+}
+
+.big-h1 {
+	text-align: center;
+	font-family: "Playfair Display", serif;
+	color: #000000;
+	font-size: 8em;
+}
+
+.mobile-container,
+.mobile-head-wrapper {
+	display: none;
+}
+
+.row {
+	display: -ms-flexbox; /* IE10 */
+	display: flex;
+	-ms-flex-wrap: wrap; /* IE10 */
+	flex-wrap: wrap;
+	padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+	-ms-flex: 33%; /* IE10 */
+	flex: 33%;
+	max-width: 33%;
+	padding: 0 4px;
+}
+
+.column img {
+	margin-top: 8px;
+	vertical-align: middle;
+}
+
+.s2 .copy {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+.s3 .col {
+	background: #fff;
+	box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.3);
+	padding: 20px;
+}
+
+.s3 {
+	margin-bottom: 200px;
+}
+
+/*
+========================================
+Footer
+========================================
+*/
+
+footer {
+	font-family: "Varela Round", sans-serif;
+	padding: 50px 20px 20px 20px;
+	background: #13bc87;
+	color: #b2b2b2;
+	letter-spacing: 1px;
+	text-align: center;
+}
+
+footer ul {
+	list-style: none;
+}
+
+footer p {
+	font-size: 0.85em;
+}
+
+footer a {
+	text-decoration: none;
+	color: #eee;
+}
+
+footer .fa-instagram,
+footer .fa-facebook-square,
+footer .fa-twitter-square {
+	font-size: 2em;
+	margin: 2px;
+}
+
+footer h3 {
+	text-decoration: underline;
+}
+
+.bottom-bar {
+	padding: 20px;
+	background: #111;
+	color: #b2b2b2;
+	font-family: "Varela Round", sans-serif;
+	font-size: 0.7em;
+}
+
+/*
+========================================
+Media Queries
+========================================
+*/
+
+@media screen and (max-width: 868px) {
+	.mobile-head-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
+
+	.mobile-header {
+		display: block;
+		margin-bottom: 300px;
+		text-align: center;
+	}
+
+	.mobile-header h1 {
+		font-family: "Varela Round", sans-serif;
+		letter-spacing: 2px;
+		background: linear-gradient(to right, #9c722a, #00bcd4);
+		background: -webkit-linear-gradient(to right, #009688, #00bcd4);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.mobile-header h1 .accent-line {
+		font-size: 0.65em;
+		border-bottom: 2px solid #b2b2b2;
+		font-family: "Varela Round", sans-serif;
+		color: #b2b2b2 !important;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: #b2b2b2;
+		vertical-align: super;
+	}
+
+	.mobile-header h3 {
+		font-family: "Playfair Display", serif;
+		font-size: 2.5em;
+		margin: 0;
+		color: #222;
+	}
+
+	.column {
+		-ms-flex: 100%;
+		flex: 100%;
+		max-width: 100%;
+	}
+
+	.container {
+		display: none;
+	}
+
+	.mobile-container {
+		display: block;
+		width: 100%;
+	}
+
+	.mobile-container {
+		width: 100%;
+	}
+
+	.mobile-card {
+		padding: 20px 30px;
+		text-align: center;
+		background: #fff;
+		border-radius: 0px;
+		width: 100%;
+		height: auto;
+		box-shadow: 0px 4px 30px 1px rgba(0, 0, 0, 0.2);
+	}
+
+	.mobile-card h4 {
+		font-family: "Varela Round", sans-serif;
+		background: linear-gradient(to right, #009688, #00bcd4);
+		background: -webkit-linear-gradient(to right, #12c8b6, #00bcd4);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.mobile-card h1 {
+		font-family: "Playfair Display", serif;
+	}
+
+	.mobile-card-image {
+		margin: 10px 0;
+		background: #b2b2b2;
+		background: url("https://images.unsplash.com/photo-1488654849086-2aab86c3261f?ixlib=rb-0.3.5&s=79a944fa1f4239fedb461fb251980b2e&auto=format&fit=crop&w=1950&q=80")no-repeat
+			center;
+		background-size: cover;
+		width: 100%;
+		height: 300px;
+		-webkit-filter: grayscale(70%);
+		filter: grayscale(70%);
+	}
+
+	.row,
+	.row-thirds {
+		display: block;
+	}
+
+	.row .col,
+	.row-thirds .col {
+		width: 100%;
+		margin: 0 0 10px 0;
+	}
+
+	.row {
+		margin: 0 0 20px 0;
+	}
+
+	footer ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	footer .socials li {
+		text-align: center;
+		display: inline;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	nav.standard-nav {
+		display: none;
+	}
+
+	#open-btn {
+		display: block;
+		z-index: 2;
+	}
+
+	.overlay .closebtn {
+		font-size: 40px;
+		top: 15px;
+		right: 35px;
+	}
+}
+
+@media (max-width: 620px) {
+	main {
+		padding: 20px;
+	}
+
+	.big-h1 {
+		font-size: 5em;
+	}
+}
+
+    </style>
+</head>
+<body>
+  <nav>
+    <h1 class="brand-name">Welcome To Heaven</h1>
+    <ul class="links-container">
+      <li class="link"><a href="">Home</a></li>
+      <li class="link"><a href="about">About</a></li>
+      <li class="link"><a href="package">Package</a></li>
+              <li class="link"><a href="contact">Contact</a></li>
+
+    </ul>
+    <div class="hamburger">
+      <span class="line"></span>
+      <span class="line"></span>
+      <span class="line"></span>
+    </div>
+  </nav>
+
+
+
+
+
+
+
+
+<nav class="mobile-navbar">
+            <span id="open-btn" onclick="openNav()"><i class="fas fa-ellipsis-h" style="vertical-align: middle;"></i> <span id="menu-txt" style="vertical-align: middle;">menu</span></span>
+        </nav>
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i class="far fa-times-circle"></i></a>
+            <div class="overlay-content">
+                <a href="home">
+                    Home</a>
+                <a href="about">About</a>
+                <a href="package">Package</a>
+                <a href="contact">Contact</a>
+            </div>
+        </div>
+
+        <section class="hero" id="home">
+            <div class="mobile-head-wrapper">
+                <header class="mobile-header">
+                    <h1><span class="accent-line">the</span> san francisco</h1>
+                    <h3>Golden Gate Bridge</h3>
+                </header>
+            </div>
+        </section>
+
+        <main>
+            <div class="container">
+                <div class="card">
+                    <header>
+                        <h2>About</h2>
+                        <h1>Golden Gate Bridge</h1>
+                        <p><h2>Nested in one of the most culturally diverse cities in the United States is the stunning, architectural marvel, known as the Golden Gate Bridge.</h2></p>
+                    </header>
+                </div>
+                <div class="card-image"></div>
+            </div>
+
+            <div class="mobile-container">
+                <div class="mobile-card">
+                    <div class="mobile-card-image"></div>
+                    <header>
+                        <h4>About</h4>
+                        <h1>Golden Gate Bridge</h1>
+                        <p><h2>Nested in one of the most culturally diverse cities in the United States is the stunning, architectural marvel, known as the Golden Gate Bridge.</h2></p>
+                    </header>
+                </div>
+            </div>
+
+            <section class="s1" id="gallery">
+                <header>
+                    <h1 class="big-h1">
+
+                    </h1>
+                </header>
+                <!-- Photo Grid -->
+                <div class="row">
+                    <div class="column">
+                        <img src="https://images.unsplash.com/photo-1496378695585-739a3a44d02d?ixlib=rb-0.3.5&s=aea76e0fb523e406f09d79182756d410&auto=format&fit=crop&w=1448&q=80">
+                        <br>
+                        <img src="https://images.unsplash.com/photo-1470204901966-f23336e57278?ixlib=rb-0.3.5&s=95033a9f3f6383ade722c4f341cf1670&auto=format&fit=crop&w=1950&q=80">
+                        <img src="https://images.unsplash.com/photo-1474610715337-344726d48cb7?ixlib=rb-0.3.5&s=f058f756b499528a369e6eaeb799af5c&auto=format&fit=crop&w=1950&q=80">
+                        <img src="https://images.unsplash.com/photo-1471205901163-f17feba1cfb4?ixlib=rb-0.3.5&s=ca2b116bea4490285ee836ce7fff4482&auto=format&fit=crop&w=1000&q=80">
+
+
+                    </div>
+                    <div class="column">
+                        <img src="https://images.unsplash.com/photo-1503458610011-da24d1a36d7b?ixlib=rb-0.3.5&s=33039bcd09974a6973ffa18b75675754&auto=format&fit=crop&w=1950&q=80">
+                        <img src="https://images.unsplash.com/photo-1416184008836-5486f3e2cf58?ixlib=rb-0.3.5&s=f36294eba846f154c03151eb0e412507&auto=format&fit=crop&w=933&q=80">
+                        <img src="https://images.unsplash.com/photo-1488654849086-2aab86c3261f?ixlib=rb-0.3.5&s=79a944fa1f4239fedb461fb251980b2e&auto=format&fit=crop&w=1950&q=80">
+                        <img src="https://images.unsplash.com/photo-1464368116928-8e56edaa92e3?ixlib=rb-0.3.5&s=ec0ab2c3209ce866fe2642de88042605&auto=format&fit=crop&w=1951&q=80">
+
+                    </div>
+                    <div class="column">
+                        <img src="https://images.unsplash.com/photo-1470236108104-dc405c748d0f?ixlib=rb-0.3.5&s=7475abba58f1886b5bccc941d396b18e&auto=format&fit=crop&w=1950&q=80">
+                        <img src="https://images.unsplash.com/photo-1502285745115-13e43e3faad4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=025ea9ff10220737ea011f6a9ef016d6&auto=format&fit=crop&w=2100&q=80">
+                        <img src="https://images.unsplash.com/photo-1467642511314-5699547ddf30?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=36a44d75b485c38882321fca15418211&auto=format&fit=crop&w=934&q=80">
+                        <img src="https://images.unsplash.com/photo-1446160657592-4782fb76fb99?ixlib=rb-0.3.5&s=246912d4c7100129b8687101e2997990&auto=format&fit=crop&w=1949&q=80">
+                    </div>
+                </div>
+            </section>
+
+            <section class="s2" id="About">
+                <header>
+                    <h1 class="big-h1">
+                        History
+                    </h1>
+                </header>
+                <section class="copy">
+                    <p><h2>Construction began to build the bridge on January 5, 1933. The plan was to create a bridge that would span connect the San Francisco Peninsula and the southern end of Marin County.</h2></p>
+
+                    <p><h2>The two key players in accomplishing the task were San Francisco's city engineer, Michael M. O'Shaughnessy and engineer and poet Joseph Strauss. They projected a cost of $25-$30 million dollars; it was no surprise that they were faced with overwhelming
+                        opposition from a variety of people. If it weren't for Bank of America buying the project, the funds may have never been secured.</h2></p>
+
+                    <p><h2>The Golden Gate Bridge officially opened on May 27, 1937, the longest bridge span in the world at the time. The first public crossing had taken place the day before, when 200,000 people walked, ran and even roller skated over the new bridge.</h2>
+                        </p>
+
+                        <p><h2>
+                        The Golden Gate Bridge is one of the most iconic and recognizable landmarks and symbolizes San Francisco characterized by its tall towers and famous red paint.</h2></p>
+                </section>
+
+            </section>
+
+            <section class="s3" id="info">
+                <header>
+                    <h1 class="big-h1">
+                        Info
+                    </h1>
+                </header>
+
+                <div class="row-thirds">
+                    <div class="col">
+                        <img src="https://images.unsplash.com/photo-1474411858117-f213a1dcc00d?ixlib=rb-0.3.5&s=a3fa39b665c6ee4fa86e0252609ce862&auto=format&fit=crop&w=1351&q=80">
+                        <h2>Visit</h2>
+                        <p><h3>The Bridge's Welcome Center offers merchandise and historical information. Open daily from 9am to 6pm, the Welcome Center dedicated to telling the stories of the Golden Gate Bridge.</h3></p>
+
+                    </div>
+                    <div class="col">
+                        <img src="https://images.unsplash.com/photo-1504274709058-265968fcdcdf?ixlib=rb-0.3.5&s=55643bb16fde4d96d1a2ecbe02912eb2&auto=format&fit=crop&w=1350&q=80">
+                        <h2>Tours</h2>
+                        <p><h3>If you're interested in the history of the Golden Gate Bridge, twice-weekly (Thursdays and Sundays) free walking Bridge tours are offered by San Francisco City Guides</h3></p>
+
+                    </div>
+                    <div class="col">
+                        <img src="https://images.unsplash.com/reserve/rtOiVoduRDe3Ksidwx0Z_photo03.jpg?ixlib=rb-0.3.5&s=ac1466b503627adb9d18c53e1961294e&auto=format&fit=crop&w=1412&q=80">
+                        <h2>Hike</h2>
+                        <p><h3>Both ends of the Bridge touch the Golden Gate National Recreation Area. Enjoy picturesque trails and vista points in one of the world's largest national parks in an urban area.</h3></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="row-thirds">
+                <div class="col"><img src="https://images.unsplash.com/photo-1502773779955-99a8ab685dae?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b0b16c712f4a150735103b7f073bd91a&auto=format&fit=crop&w=1350&q=80" style="width:200px; height:auto;">
+                    <h4 class="news">news</h4>
+                    <p>Read all the latest</p>
+                </div>
+                <div class="col">
+                    <ul class="socials">
+                        <li><i class="fab fa-instagram"></i></li>
+                        <li><i class="fab fa-facebook-square"></i></li>
+                        <li><i class="fab fa-twitter-square"></i></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul>
+
+
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+        <section class="bottom-bar">
+            <p>Contact Monday - Friday, except holidays, 8:30am to 4:30pm |  &copy 2018</p>
+        </section>
+        <script>
+            function openNav() {
+	document.getElementById("myNav").style.width = "100%";
+}
+
+function closeNav() {
+	document.getElementById("myNav").style.width = "0%";
+}
+
+// Select all links with hashes
+
+$('a[href*="#"]')
+	// Remove links that don't actually link to anything
+	.not('[href="#"]')
+	.not('[href="#0"]')
+	.click(function(event) {
+		// On-page links
+		if (
+			location.pathname.replace(/^\//, "") == this.pathname.replace(/^\//, "") &&
+			location.hostname == this.hostname
+		) {
+			// Figure out element to scroll to
+			var target = $(this.hash);
+			target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
+			// Does a scroll target exist?
+			if (target.length) {
+				// Only prevent default if animation is actually gonna happen
+				event.preventDefault();
+				$("html, body").animate(
+					{
+						scrollTop: target.offset().top
+					},
+					1000,
+					function() {
+						// Callback after animation
+						// Must change focus!
+						var $target = $(target);
+						$target.focus();
+						if ($target.is(":focus")) {
+							// Checking if the target was focused
+							return false;
+						} else {
+							$target.attr("tabindex", "-1"); // Adding tabindex for elements not focusable
+							$target.focus(); // Set focus again
+						}
+					}
+				);
+			}
+		}
+	});
+
+        </script>
+
+</body>
+
+
+</html>
